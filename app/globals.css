@@ -214,6 +214,6 @@
     }
 
     h1 {
-        @apply text-4xl font-heading;
+        @apply font-heading text-[2.4375rem] leading-none font-light tracking-[0.03em] text-foreground;
     }
 }
