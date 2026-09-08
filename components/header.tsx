@@ -1,20 +1,30 @@
-'use client'
+import {buttonVariants} from "@/components/ui/button";
+import Link from "next/link";
+import {cn} from "@/lib/utils";
+import {Separator} from "@/components/ui/separator";
 
-const titles: Record<string, string> = {
-    '/': 'B. E. Graefe',
-    '/about': 'About Me',
-    '/gallery': 'Gallery',
-}
+export type Location = "gym-ledger";
 
-export default function Header() {
+export default function Header({title, subtitle, location}: { title: string; subtitle: string; location?: Location }) {
     return (
-        <header className={"leather-dark seam-b stitch-b h-16"}>
-            <div className={"container mx-auto h-full flex items-center justify-between pb-2"}>
-                <h1>{titles[window.location.pathname] || 'Default Title'}</h1>
+        <header className={"leather-dark seam-b stitch-b min-h-16"}>
+            <div className={"container mx-auto h-full flex flex-col pb-6 pt-6"}>
+                <p className={"pb-2 font-sans text-[0.625rem] uppercase tracking-[0.36em] font-normal text-accent"}>{subtitle.toUpperCase()}</p>
+                <div className={"flex justify-between items-center w-full"}>
+                    <h1>{title}</h1>
+                    <nav className={"flex space-x-2"}>
+                        <Link href={"/gym-ledger"} className={cn(buttonVariants({
+                            variant: location === "gym-ledger" ? "default" : "outline",
+                            size: "sm"
+                        }))}>Gym Ledger</Link>
+                        <Separator orientation={"vertical"}/>
+                        <Link href={"/"} className={cn(buttonVariants({
+                            variant: location === undefined ? "default" : "outline",
+                            size: "sm"
+                        }))}>Home</Link>
+                    </nav>
+                </div>
             </div>
-            <nav>
-
-            </nav>
         </header>
     )
 }

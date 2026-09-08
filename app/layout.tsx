@@ -2,7 +2,6 @@ import type {Metadata} from "next";
 import {Cormorant_Garamond, EB_Garamond} from "next/font/google";
 import "./globals.css";
 import {cn} from "@/lib/utils";
-import Header from "@/components/header";
 
 const font = Cormorant_Garamond({
     variable: "--font-sans",
@@ -26,7 +25,6 @@ export default function RootLayout({children}: LayoutProps<"/">) {
             className={cn("h-full", "antialiased", font.variable, fontEb.variable, "font-sans")}
         >
         <body className="min-h-full flex flex-col leather">
-        <Header/>
         {children}
         </body>
         </html>
